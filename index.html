@@ -466,11 +466,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
   <script>
-    const lightbox = new SimpleLightbox('.gallery a', { 
-      captions: true,
-      captionSelector: 'figcaption',
-      captionDelay: 250 
-    });
+   const lightbox = new SimpleLightbox('.gallery a', { 
+  captions: true,
+  captionSelector: 'self',
+  captionsData: 'alt',
+  captionDelay: 250
+});
   </script>
 </body>
 </html>
