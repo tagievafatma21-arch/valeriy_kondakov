@@ -27,6 +27,28 @@
     nav a { margin: 0 15px; text-decoration: none; color: #444; font-weight: bold; }
     nav a:hover { text-decoration: underline; }
 
+   .popup-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50; /* зелёный для успеха */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s, transform 0.4s;
+    z-index: 1000;
+}
+
+.popup-message.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
     blockquote {
       margin: 1.2em auto;
       padding: 1em;
@@ -452,29 +474,51 @@
 
 <section id="contact">
   <h2>Связаться с художником</h2>
-    <form action="send.php" method="post">
-  <input type="text" name="name" placeholder="Ваше имя" required>
-  <input type="email" name="email" placeholder="Ваш email" required>
-  <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
-  <button type="submit">Отправить</button>
-</form>e="submit">Отправить</button>
-</section>
+  <form id="contactForm" action="send.php" method="post">
+    <input type="text" name="name" placeholder="Ваше имя" required>
+    <input type="email" name="email" placeholder="Ваш email" required>
+    <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+    <button type="submit">Отправить</button>
+  </form>
 
-        <?php
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST["name"]);
-    $email = htmlspecialchars($_POST["email"]);
-    $message = htmlspecialchars($_POST["message"]);
+  <!-- всплывающее уведомление -->
+  <div id="popupMessage" class="popup-message"></div>
+ 
+  <script>
+document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault(); // отменяем стандартную отправку
 
-    $to = "tagievafatma21@gmail.com";
-    $subject = "Новое сообщение с сайта";
-    $body = "Имя: $name\nEmail: $email\n\nСообщение:\n$message";
+    const formData = new FormData(this);
 
-    mail($to, $subject, $body);
-    echo "Спасибо, сообщение отправлено!";
+    fetch('send.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        showPopup(data, data.includes("Спасибо") ? "#4caf50" : "#f44336"); // зелёный или красный
+        document.getElementById('contactForm').reset();
+    })
+    .catch(error => {
+        showPopup('Ошибка отправки. Попробуйте позже.', '#f44336');
+        console.error(error);
+    });
+});
+
+function showPopup(message, bgColor) {
+    const popup = document.getElementById('popupMessage');
+    popup.textContent = message;
+    popup.style.background = bgColor;
+    popup.classList.add('show');
+
+    // скрыть через 4 секунды
+    setTimeout(() => {
+        popup.classList.remove('show');
+    }, 4000);
 }
-?>
+</script>
 
+</section>
 
 <footer>
   &copy; 2025 Валерий Кондаков
