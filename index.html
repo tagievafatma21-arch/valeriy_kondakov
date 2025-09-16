@@ -117,16 +117,6 @@
       color: #888;
       font-size: 0.9rem;
     }
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
-<script>
-  // Подключаем lightbox к ссылкам
-  const lightbox = new SimpleLightbox('.lightbox', { 
-    captions: true,
-    captionSelector: 'figcaption',
-    captionDelay: 250 
-  });
-</script>
-
   </style>
 </head>
 <body>
@@ -472,7 +462,15 @@
 
 <footer>
   &copy; 2025 Валерий Кондаков
-</footer>
+  </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
+  <script>
+    const lightbox = new SimpleLightbox('.gallery a', { 
+      captions: true,
+      captionSelector: 'figcaption',
+      captionDelay: 250 
+    });
+  </script>
 </body>
 </html>
