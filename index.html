@@ -8,159 +8,181 @@
   <!-- Lightbox стили -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.css" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0 auto;
-      max-width: 900px;
-      font-family: Georgia, serif;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #222;
-      padding: 20px;
-      text-align: left;
-    }
-
-    h1 { text-align: center; font-size: 2.4rem; margin-bottom: 0.2em; }
-    h2 { text-align: center; font-size: 1.8rem; border-bottom: 1px solid #ccc; padding-bottom: 0.3em; margin-top: 2em; }
-
-    nav { margin-top: 1em; margin-bottom: 2em; }
-    nav a { margin: 0 15px; text-decoration: none; color: #444; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-
-   .popup-message {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #4caf50; /* зелёный для успеха */
-    color: white;
-    padding: 15px 25px;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s, transform 0.4s;
-    z-index: 1000;
+  <style>body {
+  margin: 0 auto;
+  max-width: 900px;
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #222;
+  padding: 20px;
+  text-align: left;
 }
 
+h1 { 
+  text-align: center; 
+  font-size: 2.4rem; 
+  margin-bottom: 0.2em; 
+}
+
+h2 { 
+  text-align: center; 
+  font-size: 1.8rem; 
+  border-bottom: 1px solid #ccc; 
+  padding-bottom: 0.3em; 
+  margin-top: 2em; 
+}
+
+/* Центрируем меню */
+nav { 
+  margin-top: 1em; 
+  margin-bottom: 2em; 
+  text-align: center; 
+}
+nav a { 
+  margin: 0 15px; 
+  text-decoration: none; 
+  color: #444; 
+  font-weight: bold; 
+}
+nav a:hover { text-decoration: underline; }
+
+/* Всплывающее сообщение */
+.popup-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4caf50;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s, transform 0.4s;
+  z-index: 1000;
+}
 .popup-message.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }
 
-    blockquote {
-      margin: 1.2em auto;
-      padding: 1em;
-      border-left: 3px solid #888;
-      font-style: italic;
-      color: #555;
-      background: #f2f2f2;
-      text-align: left;
-    }
+/* Цитаты */
+blockquote {
+  margin: 1.2em auto;
+  padding: 1em;
+  border-left: 3px solid #888;
+  font-style: italic;
+  color: #555;
+  background: #f2f2f2;
+  text-align: left;
+}
 
-    .highlight {
-      background: #f0f8f5;
-      border: 1px solid #4caf4f;
-      padding: 1em;
-      margin: 2em 0;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* уменьшили минимальный размер */
-  gap: 15px; /* чуть меньше отступы */
+/* Выделение */
+.highlight {
+  background: #f0f8f5;
+  border: 1px solid #4caf4f;
+  padding: 1em;
   margin: 2em 0;
+  text-align: center;
+  font-weight: bold;
 }
 
-    .gallery figure {
-      margin: 0;
-    }
+/* Галерея */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 2em 0;
+  justify-items: center; /* все элементы по центру */
+}
 
-    .gallery img {
-      width: 100%;
-      max-width: 200px; 
-      height: auto;
-      border-radius: 4px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      cursor: zoom-in;
-      transition: transform 0.3s ease;
-    }
+.gallery figure {
+  margin: 0;
+  text-align: center; /* центрируем подписи */
+}
 
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
+.gallery img {
+  width: 100%;
+  max-width: 300px; /* уменьшаем размер картинок */
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
 
-    figcaption {
-      margin-top: 6px;
-      font-size: 0.9rem;
-      color: #555;
-      font-style: italic;
-    }
-    
-    figcaption {
-  text-align: center;       /* выравнивание по центру */
-  font-style: italic;       /* курсив для подписи */
-  color: #555;              /* цвет текста */
-  font-size: 0.9rem;        /* чуть меньше основного текста */
-  margin-top: 5px;          /* отступ сверху от картинки */
-  line-height: 1.3;         /* удобочитаемый интерлиньяж */
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Подписи */
+figcaption {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+  text-align: center;
+  line-height: 1.3;
 }
 
 figcaption h3 {
-  margin: 0.2em 0;          /* небольшой отступ сверху и снизу */
-  font-size: 1rem;           /* заголовок подписи чуть больше текста */
+  margin: 0.2em 0;
+  font-size: 1rem;
+  text-align: center;
 }
 
 figcaption p.caption {
-  margin: 0;                /* можно убрать стандартные отступы */
-  font-size: 0.85rem;       /* размер дополнительного текста */
-  color: #777;              /* чуть светлее для под-текста */
+  margin: 0;
+  font-size: 0.85rem;
+  color: #777;
+  text-align: center;
 }
 
+/* Видео */
+iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  margin-top: 1em;
+}
 
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      margin-top: 1em;
-    }
+/* Форма */
+form {
+  margin-top: 2em;
+  text-align: left;
+}
 
-    form {
-      margin-top: 2em;
-      text-align: left;
-    }
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1em;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
 
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 1em;
-      border: 1px solid #bbb;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-family: inherit;
-    }
+button {
+  padding: 0.8em 1.5em;
+  font-size: 1rem;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover { background: #666; }
 
-    button {
-      padding: 0.8em 1.5em;
-      font-size: 1rem;
-      background: #444;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    button:hover { background: #666; }
-
-    footer {
-      text-align: center;
-      margin: 3em 0 1em 0;
-      color: #888;
-      font-size: 0.9rem;
-    }
+/* Подвал */
+footer {
+  text-align: center;
+  margin: 3em 0 1em 0;
+  color: #888;
+  font-size: 0.9rem;
+}
   </style>
 </head>
 <body>
