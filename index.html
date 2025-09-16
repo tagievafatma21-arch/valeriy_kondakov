@@ -524,18 +524,19 @@
   &copy; 2025 Валерий Кондаков
   </footer>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js">
-   
- <script>
-const lightbox = new SimpleLightbox('.gallery a', { 
-  captions: true,
-  captionSelector: 'figcaption',  // берём подпись из figcaption
-  captionsData: 'inner',           // используем внутренний текст элемента
-  captionDelay: 250
-});
+<!-- Подключение SimpleLightbox -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
+
+<script>
+  // Инициализация Lightbox
+  const lightbox = new SimpleLightbox('.gallery a', { 
+    captions: true,
+    captionSelector: 'figcaption',  // берём подпись из figcaption
+    captionsData: 'inner',           // используем текст элемента
+    captionDelay: 250
+  });
 </script>
-        
- </script>
 
 </body>
 </html>
