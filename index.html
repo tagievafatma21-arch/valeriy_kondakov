@@ -452,13 +452,29 @@
 
 <section id="contact">
   <h2>Связаться с художником</h2>
-  <form>
-    <input type="text" name="name" placeholder="Ваше имя">
-    <input type="email" name="email" placeholder="Ваш email">
-    <textarea name="message" rows="5" placeholder="Ваше сообщение"></textarea>
-    <button type="submit">Отправить</button>
-  </form>
+    <form action="send.php" method="post">
+  <input type="text" name="name" placeholder="Ваше имя" required>
+  <input type="email" name="email" placeholder="Ваш email" required>
+  <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+  <button type="submit">Отправить</button>
+</form>e="submit">Отправить</button>
 </section>
+
+        <?php
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST["name"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $message = htmlspecialchars($_POST["message"]);
+
+    $to = "tagievafatma21@gmail.com";
+    $subject = "Новое сообщение с сайта";
+    $body = "Имя: $name\nEmail: $email\n\nСообщение:\n$message";
+
+    mail($to, $subject, $body);
+    echo "Спасибо, сообщение отправлено!";
+}
+?>
+
 
 <footer>
   &copy; 2025 Валерий Кондаков
