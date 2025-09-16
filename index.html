@@ -524,14 +524,18 @@ function showPopup(message, bgColor) {
   &copy; 2025 Валерий Кондаков
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js"></script>
-  <script>
-   const lightbox = new SimpleLightbox('.gallery a', { 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.14.1/simple-lightbox.min.js">
+   
+ <script>
+const lightbox = new SimpleLightbox('.gallery a', { 
   captions: true,
-  captionSelector: 'self',
-  captionsData: 'alt',
+  captionSelector: 'figcaption',  // берём подпись из figcaption
+  captionsData: 'inner',           // используем внутренний текст элемента
   captionDelay: 250
 });
-  </script>
+</script>
+        
+ </script>
+
 </body>
 </html>
