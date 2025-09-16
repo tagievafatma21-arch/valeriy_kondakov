@@ -474,51 +474,51 @@
 
 <section id="contact">
   <h2>Связаться с художником</h2>
-  <form id="contactForm" action="send.php" method="post">
+  <form id="contact-form" action="https://formsubmit.co/tageivafatma21@gmail.com" method="POST">
     <input type="text" name="name" placeholder="Ваше имя" required>
     <input type="email" name="email" placeholder="Ваш email" required>
     <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
     <button type="submit">Отправить</button>
   </form>
 
-  <!-- всплывающее уведомление -->
-  <div id="popupMessage" class="popup-message"></div>
- 
-  <script>
-document.getElementById('contactForm').addEventListener('submit', function(e){
-    e.preventDefault(); // отменяем стандартную отправку
-
-    const formData = new FormData(this);
-
-    fetch('send.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-        showPopup(data, data.includes("Спасибо") ? "#4caf50" : "#f44336"); // зелёный или красный
-        document.getElementById('contactForm').reset();
-    })
-    .catch(error => {
-        showPopup('Ошибка отправки. Попробуйте позже.', '#f44336');
-        console.error(error);
-    });
-});
-
-function showPopup(message, bgColor) {
-    const popup = document.getElementById('popupMessage');
-    popup.textContent = message;
-    popup.style.background = bgColor;
-    popup.classList.add('show');
-
-    // скрыть через 4 секунды
-    setTimeout(() => {
-        popup.classList.remove('show');
-    }, 4000);
-}
-</script>
-
+  <div id="thank-you" style="
+      display:none;
+      background: #4caf50;
+      color: white;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 4px;
+      text-align: center;
+  ">
+    Спасибо! Ваше сообщение отправлено.
+  </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const thankYou = document.getElementById('thank-you');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        thankYou.style.display = 'block';
+        form.reset();
+        setTimeout(() => { thankYou.style.display = 'none'; }, 5000);
+      } else {
+        alert('Ошибка при отправке. Попробуйте ещё раз.');
+      }
+    }).catch(error => {
+      alert('Ошибка при отправке. Попробуйте ещё раз.');
+      console.log(error);
+    });
+  });
+</script>
 
 <footer>
   &copy; 2025 Валерий Кондаков
