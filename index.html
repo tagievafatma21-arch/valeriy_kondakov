@@ -52,6 +52,62 @@ nav a {
 }
 nav a:hover { text-decoration: underline; }
 
+    /* Базовое меню */
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background: #222;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu > li {
+  margin-right: 20px;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background: #444;
+}
+
+/* Выпадающее меню */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #333;
+  min-width: 180px;
+}
+
+.dropdown-content li a {
+  padding: 10px 15px;
+  color: #fff;
+  display: block;
+}
+
+.dropdown-content li a:hover {
+  background: #555;
+}
+
+/* Показываем меню при наведении */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /* Всплывающее сообщение */
 .popup-message {
   position: fixed;
@@ -249,7 +305,14 @@ footer {
 <h1>Валерий Кондаков</h1>
 <nav>
   <a href="#biography">Биография</a>
-  <a href="#works">Работы</a>
+  <a href="#">Работы ▼</a>
+      <ul class="dropdown-content">
+        <li><a href="ink.html">Картины маслом</a></li>
+        <li><a href="oil.html">Картины тушью</a></li>
+        <li><a href="watercolor.html">Вышивка</a></li>
+        <li><a href="graphics.html">Скульптуры</a></li>
+      </ul>
+    </li>
   <a href="#contact">Контакты</a>
 </nav>
 
