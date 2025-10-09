@@ -222,14 +222,18 @@ figcaption p.caption {
   }
   .gallery img {
     height: 140px;
+    
 .caption {
-  font-size: 0.85rem;
-  color: #555;
+  font-size: 0.8rem;             /* чуть меньше — визуально аккуратнее */
+  color: #666;                   /* мягче и чище */
   font-style: italic;
-  text-align: left;
-  margin-top: 0.4em;
-  padding-left: 0.2em;
-}
+  text-align: justify;           /* выравнивание по ширине */
+  line-height: 1.3;              /* читаемость */
+  margin: 6px 8px 10px 8px;      /* равные отступы внутри ячейки */
+  padding: 0;                    /* убираем лишнее */
+  text-indent: 0;                /* без красной строки */
+  hyphens: auto;                 /* переносы длинных слов */
+  overflow-wrap: break-word;     /* чтобы не ломалось при длинных словах */
 }
 /* Видео */
 iframe {
@@ -360,11 +364,9 @@ footer {
   </ul>
 </nav>
 
-
-  </div>
  <div class="portrait">
         <figure>
-          <img src="images/IMG_0491.png"> alt=<"Художник Валерий Кондаков">
+          <img src="images/IMG_0491.png" alt="Художник Валерий Кондаков"
             </figure>
   </div>
 
