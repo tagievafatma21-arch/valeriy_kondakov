@@ -222,8 +222,9 @@ figcaption p.caption {
   }
   .gallery img {
     height: 140px;
-    
-.caption {
+}
+}
+    .caption {
   font-size: 0.8rem;             /* чуть меньше — визуально аккуратнее */
   color: #666;                   /* мягче и чище */
   font-style: italic;
@@ -341,6 +342,27 @@ footer {
   margin: 3em 0 1em 0;
   color: #888;
   font-size: 0.9rem;
+}
+    /* 🖼 Элегантная музейная подпись для SimpleLightbox */
+.sl-caption {
+  background: rgba(245, 238, 230, 0.92) !important; /* тёплый бежево-пергаментный фон */
+  color: #3b2f2f !important;                        /* мягкий тёплый тёмно-коричневый текст */
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: justify;
+  padding: 10px 18px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-radius: 0 0 8px 8px;
+  max-width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Чтобы подпись не липла к нижнему краю экрана */
+.sl-wrapper .sl-caption {
+  bottom: 20px !important;
 }
   </style>
 </head>
@@ -699,28 +721,28 @@ footer {
 
              <figure>
        <a href="images/a2.jpg" class="lightbox">
-       <img src="images/a2.jpg" alt="a2.jpg">
+       <img src="images/a2.jpg" alt="Автопортрет 2. 2024г. 81х61 автор.техн.">
          </a>
          <figcaption>Автопортрет 2. 2024г. 81х61 автор.техн.</figcaption>
            </figure>
         
              <figure>
        <a href="images/a3.jpg" class="lightbox">
-       <img src="images/a3.jpg" alt="a3.jpg">
+       <img src="images/a3.jpg" alt="Автопортрет 3. 2023г. 81х61 автор.техн.">
          </a>
          <figcaption>Автопортрет 3. 2023г. 81х61 автор.техн.</figcaption>
            </figure>
 
              <figure>
        <a href="images/a4.jpg" class="lightbox">
-       <img src="images/a4.jpg" alt="a4.jpg">
+       <img src="images/a4.jpg" alt="Автопортрет 4. 2023г. 81х61 автор.техн.>
          </a>
          <figcaption>Автопортрет 4. 2023г. 81х61 автор.техн.</figcaption>
            </figure>
 
                <figure>
        <a href="images/a5.jpg" class="lightbox">
-       <img src="images/a5.jpg" alt="a5.jpg">
+       <img src="images/a5.jpg" alt="Автопортрет 5. 2025г. 81х61 автор. техн.">
          </a>
          <figcaption>Автопортрет 5. 2025г. 81х61 автор. техн.</figcaption>
            </figure>
